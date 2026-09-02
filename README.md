@@ -131,4 +131,4 @@ The Quantum Particle Swarm Optimization engine:
 
 ## 📄 License
 
-This project is built for Smart India Hackathon (SIH) 2024.
+This project is built for Smart India Hackathon (SIH) 2026.
