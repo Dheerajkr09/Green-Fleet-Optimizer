@@ -126,9 +126,6 @@ The Quantum Particle Swarm Optimization engine:
 
 ---
 
-## 👥 Team
-
-- **Dheeraj Kumar** — Developer
 
 ---
 
