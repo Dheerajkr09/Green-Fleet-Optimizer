@@ -1,6 +1,6 @@
 # 🚢 Green Fleet Optimizer — Quantum-Inspired Fuel Optimization
 
-> **SIH 2024 | Problem ID: 26138**  
+> **SIH 2026 | Problem ID: 26138**  
 > AI-driven fleet optimization system using XGBoost ML + Quantum Particle Swarm Optimization (QPSO) for fuel prediction, emission reduction, and cost-optimal ship deployment.
 
 ---
