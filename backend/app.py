@@ -27,9 +27,10 @@ def not_found(e):
 
 
 # --- PATHS ---
-MODEL_PATH = 'xgboost_fuel_model.pkl'
-ENCODER_PATH = 'encoders.pkl'
-DATA_PATH = os.path.join(os.path.dirname(__file__), 'ship_dataset_v2_augmented.csv')
+BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BACKEND_DIR, 'xgboost_fuel_model.pkl')
+ENCODER_PATH = os.path.join(BACKEND_DIR, 'encoders.pkl')
+DATA_PATH = os.path.join(BACKEND_DIR, 'ship_dataset_v2_augmented.csv')
 
 # --- CO2 and COST multipliers (same physics rules) ---
 CO2_MULT = {'Ammonia': 0.05, 'Diesel': 0.95, 'HFO': 1.0, 'Hydrogen': 0.0, 'LNG': 0.75, 'Methanol': 0.90}
@@ -261,6 +262,8 @@ def get_stats():
 
 
 if __name__ == '__main__':
-    print("\n[SERVER] Green Fleet Optimizer API running on http://localhost:5000")
+    port = int(os.environ.get('PORT', 5000))
+    print(f"\n[SERVER] Green Fleet Optimizer API running on http://localhost:{port}")
     print("[ENDPOINTS] /api/health, /api/predict, /api/optimize, /api/stats\n")
-    app.run(debug=True, port=5000)
+    app.run(debug=False, host='0.0.0.0', port=port)
+

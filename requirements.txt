@@ -5,3 +5,4 @@ numpy==2.2.6
 xgboost==3.0.2
 scikit-learn==1.7.0
 joblib==1.5.1
+gunicorn==23.0.0
