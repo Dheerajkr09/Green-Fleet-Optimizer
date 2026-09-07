@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const API_URL = '/api';
-const COLORS = ['#0ea5e9', '#0f172a', '#f59e0b', '#14b8a6'];
+const COLORS = ['#0E7C66', '#C08A2E', '#111827', '#5C6470'];
 
 export default function Visualization() {
   const [stats, setStats] = useState(null);
@@ -28,7 +28,7 @@ export default function Visualization() {
           <h2>Visualization</h2>
           <p>Loading charts from API...</p>
         </div>
-        <div className="card" style={{ padding: '60px', textAlign: 'center', color: '#94a3b8' }}>
+        <div className="card" style={{ padding: '60px', textAlign: 'center', color: '#5C6470' }}>
           Make sure Flask backend is running on port 5000
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function Visualization() {
               <XAxis dataKey="name" tick={{ fontSize: 12 }} />
               <YAxis tick={{ fontSize: 12 }} />
               <Tooltip />
-              <Bar dataKey="fuel" fill="#0ea5e9" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="fuel" fill="#0E7C66" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

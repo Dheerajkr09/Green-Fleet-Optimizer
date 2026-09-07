@@ -67,15 +67,15 @@ export default function FleetOptimization() {
 
       {/* QPSO Best Result */}
       {result?.qpso_best && (
-        <div className="card" style={{ marginBottom: '24px', borderLeft: '4px solid #10b981' }}>
-          <h3 style={{ marginBottom: '12px', color: '#10b981' }}>⚡ QPSO Global Best Solution</h3>
+        <div className="card" style={{ marginBottom: '24px', borderLeft: '4px solid #0E7C66' }}>
+          <h3 style={{ marginBottom: '12px', color: '#0E7C66' }}>⚡ QPSO Global Best Solution</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
-            <div><span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Best Ship</span><div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{result.qpso_best.ship_type}</div></div>
-            <div><span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Best Fuel</span><div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{result.qpso_best.fuel_type}</div></div>
-            <div><span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Optimal Speed</span><div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{result.qpso_best.speed} knots</div></div>
-            <div><span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Fuel Consumed</span><div style={{ fontWeight: 700 }}>{result.qpso_best.fuel_consumption.toLocaleString()} units</div></div>
-            <div><span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>CO₂ Emissions</span><div style={{ fontWeight: 700 }}>{result.qpso_best.co2_emissions.toLocaleString()} units</div></div>
-            <div><span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Cost</span><div style={{ fontWeight: 700 }}>${result.qpso_best.operational_cost.toLocaleString()}</div></div>
+            <div><span style={{ fontSize: '0.8rem', color: '#5C6470' }}>Best Ship</span><div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{result.qpso_best.ship_type}</div></div>
+            <div><span style={{ fontSize: '0.8rem', color: '#5C6470' }}>Best Fuel</span><div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{result.qpso_best.fuel_type}</div></div>
+            <div><span style={{ fontSize: '0.8rem', color: '#5C6470' }}>Optimal Speed</span><div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{result.qpso_best.speed} knots</div></div>
+            <div><span style={{ fontSize: '0.8rem', color: '#5C6470' }}>Fuel Consumed</span><div style={{ fontWeight: 700 }}>{result.qpso_best.fuel_consumption.toLocaleString()} units</div></div>
+            <div><span style={{ fontSize: '0.8rem', color: '#5C6470' }}>CO₂ Emissions</span><div style={{ fontWeight: 700 }}>{result.qpso_best.co2_emissions.toLocaleString()} units</div></div>
+            <div><span style={{ fontSize: '0.8rem', color: '#5C6470' }}>Cost</span><div style={{ fontWeight: 700 }}>${result.qpso_best.operational_cost.toLocaleString()}</div></div>
           </div>
         </div>
       )}

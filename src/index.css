@@ -1,47 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/* tumhara existing CSS neeche as-is rahega */
 
 /* ===================== DESIGN TOKENS ===================== */
 :root {
   /* Sidebar Dark Theme */
-  --sidebar-bg: #0b1628;
-  --sidebar-text: #94a3b8;
-  --sidebar-active: #38bdf8;
-  --sidebar-active-bg: rgba(56, 189, 248, 0.1);
-  --sidebar-hover: #e2e8f0;
+  --sidebar-bg: #0A1628;
+  --sidebar-text: #5C6470;
+  --sidebar-active: #0E7C66;
+  --sidebar-active-bg: rgba(14, 124, 102, 0.15);
+  --sidebar-hover: #0E7C66;
   --sidebar-width: 260px;
 
   /* Content Area */
-  --content-bg: #f1f5f9;
-  --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --card-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --content-bg: #F5F3EE;
+  --card-bg: #FFFFFF;
+  --card-border: #E4E0D6;
+  --card-shadow: none;
+  --card-shadow-hover: none;
 
   /* Typography */
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-primary: #111827;
+  --text-secondary: #5C6470;
+  --text-muted: #5C6470;
 
   /* Accent Colors */
-  --accent-blue: #3b82f6;
-  --accent-green: #10b981;
-  --accent-amber: #f59e0b;
+  --accent-blue: #0E7C66;
+  --accent-green: #0E7C66;
+  --accent-amber: #C08A2E;
   --accent-red: #ef4444;
-  --accent-purple: #8b5cf6;
-  --accent-teal: #14b8a6;
+  --accent-purple: #0E7C66;
+  --accent-teal: #0E7C66;
 
   /* Status */
-  --status-low: #10b981;
-  --status-medium: #f59e0b;
+  --status-low: #0E7C66;
+  --status-medium: #C08A2E;
   --status-high: #ef4444;
 
   /* Misc */
-  --border-radius: 12px;
+  --border-radius: 14px;
   --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===================== RESET ===================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -53,6 +60,12 @@ body {
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, 
+.stat-value, .result-value, 
+.sidebar-brand h1, .page-header h2 {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ===================== LAYOUT ===================== */
@@ -125,7 +138,7 @@ body {
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--sidebar-text);
   font-size: 0.88rem;
   font-weight: 500;
@@ -221,7 +234,7 @@ body {
 .stat-card .stat-value {
   font-size: 2rem;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--accent-amber);
   letter-spacing: -0.03em;
   margin-bottom: 4px;
 }
@@ -310,7 +323,7 @@ body {
   width: 100%;
   padding: 12px 16px;
   border: 1px solid var(--card-border);
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 0.9rem;
   font-family: 'Inter', sans-serif;
   color: var(--text-primary);
@@ -322,7 +335,6 @@ body {
 .form-group select:focus,
 .form-group input:focus {
   border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .form-row {
@@ -335,12 +347,12 @@ body {
   width: 100%;
   padding: 14px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   color: #fff;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  background: var(--accent-blue);
   cursor: pointer;
   transition: var(--transition);
   margin-top: 8px;
@@ -348,7 +360,6 @@ body {
 
 .btn-predict:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
 .btn-predict:active {
@@ -357,7 +368,8 @@ body {
 
 /* Result Card */
 .result-card {
-  background: linear-gradient(135deg, #0b1628 0%, #1e3a5f 100%);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
   padding: 40px;
   display: flex;
@@ -371,14 +383,14 @@ body {
 .result-card .result-value {
   font-size: 3.5rem;
   font-weight: 800;
-  color: var(--sidebar-active);
+  color: var(--accent-amber);
   letter-spacing: -0.03em;
   margin-bottom: 8px;
 }
 
 .result-card .result-unit {
   font-size: 1.2rem;
-  color: var(--sidebar-active);
+  color: var(--accent-blue);
   font-weight: 500;
 }
 
@@ -554,41 +566,67 @@ body {
   margin-top: 28px;
   padding: 14px 28px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 0.92rem;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   color: #fff;
-  background: linear-gradient(135deg, var(--accent-green), var(--accent-teal));
+  background: var(--accent-blue);
   cursor: pointer;
   transition: var(--transition);
 }
 
 .btn-report:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
 }
 
 /* ===================== ANIMATIONS ===================== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.main-content > * {
+.main-content>* {
   animation: fadeIn 0.4s ease-out;
 }
 
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 1024px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .modules-grid { grid-template-columns: 1fr; }
-  .prediction-layout { grid-template-columns: 1fr; }
-  .charts-grid { grid-template-columns: 1fr; }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prediction-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
-  .sidebar { width: 200px; }
-  .main-content { margin-left: 200px; padding: 24px; }
-  .stats-grid { grid-template-columns: 1fr; }
+  .sidebar {
+    width: 200px;
+  }
+
+  .main-content {
+    margin-left: 200px;
+    padding: 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }

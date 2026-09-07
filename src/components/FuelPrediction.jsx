@@ -98,17 +98,17 @@ export default function FuelPrediction() {
             <div className="result-value">{result.fuel_consumption.toLocaleString()}</div>
             <div className="result-unit">units of fuel / trip</div>
             <div className="result-description" style={{ marginTop: '24px', textAlign: 'left', width: '100%' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid var(--card-border)' }}>
                 <span>CO₂ Emissions</span>
-                <span style={{ color: '#38bdf8', fontWeight: 600 }}>{result.co2_emissions.toLocaleString()} units</span>
+                <span style={{ color: '#0E7C66', fontWeight: 600 }}>{result.co2_emissions.toLocaleString()} units</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid var(--card-border)' }}>
                 <span>Operational Cost</span>
-                <span style={{ color: '#38bdf8', fontWeight: 600 }}>${result.operational_cost.toLocaleString()}</span>
+                <span style={{ color: '#0E7C66', fontWeight: 600 }}>${result.operational_cost.toLocaleString()}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0' }}>
                 <span>Fuel Type</span>
-                <span style={{ color: '#38bdf8', fontWeight: 600 }}>{result.fuel_type}</span>
+                <span style={{ color: '#0E7C66', fontWeight: 600 }}>{result.fuel_type}</span>
               </div>
             </div>
           </div>
