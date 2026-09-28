@@ -38,7 +38,6 @@ export default function Overview({ setActiveTab }) {
   return (
     <div>
       <div className="page-header">
-        <div className="module-label">Module 0</div>
         <h2>Fleet Overview</h2>
         <p>
           Key performance indicators and a consolidated view of all platform modules. Track ship types, fuel efficiency, and route analytics in real time.

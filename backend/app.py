@@ -140,6 +140,7 @@ def optimize_fleet():
         gbest_position = np.zeros(dimensions)
         gbest_score = float('inf')
         best_stats = None
+        convergence_history = []
 
         # Encoded CO2/Cost multipliers (by encoded index)
         ship_classes = encoders['ship_type'].classes_
@@ -195,10 +196,24 @@ def optimize_fleet():
                         positions[i][j] = p + L * np.log(1 / max(u, 1e-10))
                     else:
                         positions[i][j] = p - L * np.log(1 / max(u, 1e-10))
+                        
+            convergence_history.append(gbest_score if gbest_score != float('inf') else 0)
 
         # --- Generate optimization for ALL ship types ---
         all_results = []
+        try:
+            hfo_idx = list(fuel_classes).index('HFO')
+        except ValueError:
+            hfo_idx = 0
+            
         for s_idx, s_name in enumerate(ship_classes):
+            # Unoptimized Baseline: HFO at speed 18
+            input_df_base = pd.DataFrame([[s_idx, distance, hfo_idx, weather_encoded, 18.0, load]],
+                                        columns=['ship_type', 'distance', 'fuel_type', 'weather_conditions', 'speed', 'load'])
+            pf_base = float(model.predict(input_df_base)[0])
+            c2_base = pf_base * 2.75 * co2_encoded[hfo_idx]
+            ct_base = (pf_base * cost_encoded[hfo_idx]) / 1000
+
             best_for_ship = None
             best_score_ship = float('inf')
             for f_idx, f_name in enumerate(fuel_classes):
@@ -214,16 +229,21 @@ def optimize_fleet():
                         emission_level = 'Low' if c2 < 5000 else ('Medium' if c2 < 15000 else 'High')
                         best_for_ship = {
                             'ship_type': s_name,
-                            'units_deployed': random.randint(200, 450),
+                            'best_fuel_type': fuel_classes[f_idx],
+                            'optimal_speed': round(float(spd), 2),
+                            'co2_exact': round(c2, 2),
                             'avg_fuel': round(pf, 1),
                             'emission_level': emission_level,
-                            'cost_index': round(ct, 2)
+                            'cost_index': round(ct, 2),
+                            'baseline_co2': round(c2_base, 2),
+                            'baseline_cost': round(ct_base, 2)
                         }
             all_results.append(best_for_ship)
 
         return jsonify({
             'qpso_best': best_stats,
             'fleet_table': all_results,
+            'convergence': convergence_history,
             'iterations': max_iter,
             'particles': num_particles
         })

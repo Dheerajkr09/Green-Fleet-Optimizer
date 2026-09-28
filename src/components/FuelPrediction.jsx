@@ -42,7 +42,6 @@ export default function FuelPrediction() {
   return (
     <div>
       <div className="page-header">
-        <div className="module-label">Module 1</div>
         <h2>Fuel Consumption Prediction</h2>
         <p>Input ship parameters below. Our XGBoost ML model (92.45% accuracy) will predict fuel consumption in real-time.</p>
       </div>

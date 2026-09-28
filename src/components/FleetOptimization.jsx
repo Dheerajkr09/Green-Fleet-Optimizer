@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const API_URL = '/api';
 const weatherTypes = ['Calm', 'Moderate', 'Stormy'];
 
-export default function FleetOptimization() {
+export default function FleetOptimization({ setOptimizationResult }) {
   const [form, setForm] = useState({ distance: 250, load: 85, weather: 'Stormy' });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -22,6 +22,7 @@ export default function FleetOptimization() {
       });
       const data = await res.json();
       setResult(data);
+      if (setOptimizationResult) setOptimizationResult(data);
     } catch (err) {
       console.error(err);
     }
@@ -37,7 +38,6 @@ export default function FleetOptimization() {
   return (
     <div>
       <div className="page-header">
-        <div className="module-label">Module 2</div>
         <h2>Fleet Optimization Result</h2>
         <p>Enter voyage requirements. QPSO (Quantum Particle Swarm Optimization) will find the best ship-fuel-speed combination.</p>
       </div>
@@ -88,9 +88,10 @@ export default function FleetOptimization() {
             <thead>
               <tr>
                 <th>Ship Type</th>
-                <th>Units Deployed</th>
-                <th>Avg Fuel/day</th>
-                <th>Emission Level</th>
+                <th>Best Fuel</th>
+                <th>Optimal Speed</th>
+                <th>Fuel (units)</th>
+                <th>CO₂ Emissions</th>
                 <th>Cost Index</th>
               </tr>
             </thead>
@@ -98,9 +99,12 @@ export default function FleetOptimization() {
               {result.fleet_table.map((row, i) => (
                 <tr key={i}>
                   <td style={{ fontWeight: 600 }}>{row.ship_type}</td>
-                  <td>{row.units_deployed}</td>
+                  <td>{row.best_fuel_type}</td>
+                  <td>{row.optimal_speed} kn</td>
                   <td>{row.avg_fuel.toLocaleString()}</td>
-                  <td><span className={getBadgeClass(row.emission_level)}>{row.emission_level}</span></td>
+                  <td>
+                    {row.co2_exact.toLocaleString()} <span className={getBadgeClass(row.emission_level)} style={{marginLeft: '8px'}}>{row.emission_level}</span>
+                  </td>
                   <td>${row.cost_index.toLocaleString()}</td>
                 </tr>
               ))}
