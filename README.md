@@ -3,7 +3,7 @@ title: Green Fleet Optimizer
 emoji: 🚢
 colorFrom: green
 colorTo: blue
-sdk: gradio
+sdk: docker
 app_port: 7860
 pinned: false
 ---
