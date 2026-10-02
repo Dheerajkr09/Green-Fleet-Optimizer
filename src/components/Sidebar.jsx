@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, Fuel, Ship, BarChart3, FileText } from 'lucide-react';
+import { LayoutDashboard, Fuel, Ship, BarChart3, FileText, Activity } from 'lucide-react';
 
 const navItems = [
   { id: 'overview', label: 'Overview', icon: LayoutDashboard },
@@ -33,6 +33,33 @@ export default function Sidebar({ activeTab, setActiveTab }) {
           );
         })}
       </ul>
+
+      <div style={{
+        marginTop: 'auto',
+        padding: '16px 14px',
+        borderTop: '1px solid rgba(255,255,255,0.04)',
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          marginBottom: '8px',
+        }}>
+          <Activity size={14} style={{ color: '#34D399' }} />
+          <span style={{
+            fontSize: '0.72rem',
+            color: '#34D399',
+            fontWeight: 600,
+            letterSpacing: '0.03em',
+          }}>System Online</span>
+        </div>
+        <div style={{
+          fontSize: '0.65rem',
+          color: 'var(--text-muted)',
+          letterSpacing: '0.03em',
+          opacity: 0.6,
+        }}>ML + Quantum Engine Active</div>
+      </div>
     </aside>
   );
 }
