@@ -1,5 +1,7 @@
 # 🚢 Green Fleet Optimizer — Quantum-Inspired Fuel Optimization
 
+**🚀 Live Demo: [https://green-fleet-optimizer-production.up.railway.app](https://green-fleet-optimizer-production.up.railway.app)**
+
 **SIH 2026 | Problem ID: 26138**  
 AI-driven fleet optimization system using Advanced Gradient Boosting (XGBoost) + Quantum Particle Swarm Optimization (QPSO) for fuel prediction, emission reduction, and cost-optimal ship deployment.
 
