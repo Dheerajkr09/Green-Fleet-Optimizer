@@ -12,6 +12,8 @@ COPY backend/ ./backend/
 # Copy frontend build
 COPY dist/ ./dist/
 
-EXPOSE 7860
+# Koyeb uses PORT env variable (default 8000)
+ENV PORT=8000
+EXPOSE 8000
 
 CMD ["python", "backend/app.py"]
