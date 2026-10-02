@@ -12,8 +12,7 @@ COPY backend/ ./backend/
 # Copy frontend build
 COPY dist/ ./dist/
 
-# Koyeb uses PORT env variable (default 8000)
-ENV PORT=8000
-EXPOSE 8000
+# Expose port (Railway will override this with its own PORT env var)
+EXPOSE 5000
 
 CMD ["python", "backend/app.py"]
